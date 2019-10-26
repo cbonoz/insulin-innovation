@@ -1,0 +1,33 @@
+.Features {
+  // Overflow hidden hides the bottom and left
+  // border of columns (which is actually box-shadow).
+  overflow: hidden;
+
+  &__column {
+    display: flex;
+
+    // Make card stretch to height of column so that
+    // all cards in a row are the same height.
+    align-items: stretch;
+
+    // Center card within column
+    // Only has an effect if width of child card
+    // is less than 100%.
+    justify-content: center;
+
+    // Adds bottom and left "border" to each column.
+    // Container has overflow: hidden so border is not
+    // visible on edges (since shadow goes outside container).
+    box-shadow: 1px 1px 0 0 #efefef;
+  }
+
+  &__item {
+    padding: 56px;
+  }
+
+  &__image {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    max-width: 200px;
+  }
+}
