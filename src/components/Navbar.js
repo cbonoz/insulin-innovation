@@ -37,7 +37,7 @@ function Navbar(props) {
                     New Photo
                   </Link>
                   <Link className="navbar-item" to="/profile">
-                    Profile
+                    Patient
                   </Link>
                   <Link className="navbar-item" to="/profile">
                     Send data
@@ -59,7 +59,7 @@ function Navbar(props) {
             {/* // TODO: should be /signin */}
             {false && !auth.user && (
               <Link className="navbar-item" to="/signin" onClick={e => {
-                setMenuOpen(!menuOpen) 
+                setMenuOpen(!menuOpen)
               }}>
                 Sign in
               </Link>
