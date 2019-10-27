@@ -5,44 +5,30 @@ import _ from 'lodash'
 import Webcam from "react-webcam";
 
 import { VictoryChart, VictoryTheme, VictoryArea, VictoryStack } from "victory";
-import Graph from "../components/Graph.js";
+import InsulinResult from "../components/InsulinResult.js";
+import FoodAccordion from "../components/FoodAccordion.js";
 
 const CAST_API = process.env.REACT_APP_CAST_API
+const SERVER_URL = process.env.REACT_APP_INSULIN_URL || `localhost`
 
 const videoConstraints = {
     width: 544,
     height: 544,
     facingMode: "user"
-};
-
+}
 
 function DashboardPage(props) {
   const auth = useAuth();
   const router = useRouter();
-  const [data, setData] = useState([])
   const [imgData, setImgData] = useState(null)
   const [results, setResults] = useState([])
+  const [food, setFood] = useState()
 
-  // TODO: generate real predictions based on slider settings.
-  function getData() {
-    return _.range(7).map(() => {
-      return [
-        { x: 1, y: _.random(1, 5) },
-        { x: 2, y: _.random(1, 10) },
-        { x: 3, y: _.random(2, 10) },
-        { x: 4, y: _.random(2, 10) },
-        { x: 5, y: _.random(2, 15) }
-      ];
-    });
-  }
-
-  // Redirect to /signin
-  // if not signed in.
+  // Redirect to /signin if not signed in.
   useEffect(() => {
-    if (auth.user === false) {
-      router.push("/signin");
-    }
-
+    // if (auth.user === false) {
+    //   router.push("/signin");
+    // }
     // window.setInterval(() => {
     //   setData(getData())
     // }, 4000);
@@ -66,20 +52,35 @@ function DashboardPage(props) {
               })
                   .then(res => res.json())
                   .then(res => {
+                      console.log('results', res)
                       if (!res.is_food) {
                           // $('#exampleModalLong').modal('hide')
                           alert("I did not detect any recognizable food in this photo!");
                       } else {
-                          console.log('results', res)
                           setResults(res.results)
                       }
                   })
           })
-
-
   }
 
   const hasResults = results && results.length > 0
+  const hasFood = food && Object.keys(food).length > 0
+
+  const accordion = () => {
+    const body = {} // TODO: replace
+    
+    fetch(`${SERVER_URL}/food`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body
+    })
+    .then(result => result.json())
+    .then(result => {
+
+    })
+  }
 
   return (
       <div className='centered'>
@@ -100,9 +101,16 @@ function DashboardPage(props) {
           {imgData && <img className='image-result' src={imgData}/>}
           <button class="modal-close is-large" aria-label="close"></button>
 
-          {hasResults && <div>
-            
-            </div>}
+
+          <div className="modal" is-active>
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                  {/* Show either the food accordion or the recommended insulin result */}
+                 {hasResults && !hasFood && <FoodAccordion results={results}/>}
+                 {hasFood && <InsulinResult food={food}/>}
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
           
       </div>
 

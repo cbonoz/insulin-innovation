@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Graph extends Component {
-
-    
+export default class FoodAccordion extends Component {
     render() {
         return (
             <div>

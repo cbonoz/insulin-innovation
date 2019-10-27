@@ -34,7 +34,7 @@ function Navbar(props) {
                 </Link>
                 <div className="navbar-dropdown is-boxed">
                   <Link className="navbar-item" to="/dashboard">
-                    New Screen
+                    New Photo
                   </Link>
                   <Link className="navbar-item" to="/profile">
                     Profile
