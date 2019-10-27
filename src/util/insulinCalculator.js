@@ -6,7 +6,7 @@ const kg = 45;
 const medicationMultiplier = 1.2;
 
 const insulinResistantEthnicity = ["asian_american", "african_american", "native_american", "hispanic/latino"];
-const medicationInsulin = (carbs, insulinToCarb, insulinSensitivity = 50, premealBloodSugar, actualBloodSugar, medication, ethnicity) => {
+const medicationInsulin = (carbs, insulinToCarb = 10, insulinSensitivity = 50, premealBloodSugar, actualBloodSugar, medication, ethnicity) => {
     if (
         medication.includes(MEDICINE_DEXAMETHASONE) ||
         medication.includes(MEDICINE_METHYLPREDNISOLONE) ||
@@ -22,7 +22,7 @@ const medicationInsulin = (carbs, insulinToCarb, insulinSensitivity = 50, premea
             }
         }, 1000);
 
-        return insulinCalculatedFromCarbs + insulinCalculatedFromGlucose + medicationMultiplier * kg;
+        return (insulinCalculatedFromCarbs + insulinCalculatedFromGlucose) * medicationMultiplier;
     }
 }
 
