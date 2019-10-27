@@ -21,6 +21,7 @@ function DashboardPage(props) {
   const router = useRouter();
   const [data, setData] = useState([])
   const [imgData, setImgData] = useState(null)
+  const [results, setResults] = useState([])
 
   // TODO: generate real predictions based on slider settings.
   function getData() {
@@ -59,7 +60,7 @@ function DashboardPage(props) {
               const formData = new FormData();
               formData.append("image", blob);
               console.log('blob', blob)
-              fetch(`https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition?user_key=${REACT_APP_CAST_API}`, {
+              fetch(`https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition?user_key=${CAST_API}`, {
                   method: "POST",
                   body: formData
               })
@@ -70,6 +71,7 @@ function DashboardPage(props) {
                           alert("I did not detect any recognizable food in this photo!");
                       } else {
                           console.log('results', res)
+                          setResults(res.results)
                       }
                   })
           })
@@ -77,6 +79,7 @@ function DashboardPage(props) {
 
   }
 
+  const hasResults = results && results.length > 0
 
   return (
       <div className='centered'>
@@ -96,6 +99,11 @@ function DashboardPage(props) {
           <br/>
           {imgData && <img className='image-result' src={imgData}/>}
           <button class="modal-close is-large" aria-label="close"></button>
+
+          {hasResults && <div>
+            
+            </div>}
+          
       </div>
 
   )

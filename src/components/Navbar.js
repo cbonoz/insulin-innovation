@@ -28,13 +28,16 @@ function Navbar(props) {
         <div className={"navbar-menu" + (menuOpen ? " is-active" : "")}>
           <div className="navbar-end">
             {auth.user && (
-              <div className="navbar-item has-dropdown is-hoverable">
+              <div className="navbar-item has-dropdown is-hoverable"  onClick={() => setMenuOpen(!menuOpen)}>
                 <Link className="navbar-link" to="/">
                   Account
                 </Link>
                 <div className="navbar-dropdown is-boxed">
                   <Link className="navbar-item" to="/dashboard">
-                    Dashboard
+                    New Screen
+                  </Link>
+                  <Link className="navbar-item" to="/profile">
+                    Profile
                   </Link>
                   <Link
                     className="navbar-item"
