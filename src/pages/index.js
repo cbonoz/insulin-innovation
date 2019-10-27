@@ -16,7 +16,7 @@ function IndexPage(props) {
         subtitle=""
         buttonText="Let's go"
         buttonOnClick={() => {
-          router.push("/signin");
+          router.push("/dashboard");
         }}
       />
       <FeaturesSection
