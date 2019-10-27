@@ -44,7 +44,7 @@ const InsulinResult = props => {
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                    <label class="label white">Carbs</label>
+                    <label class="label">Carbs</label>
                 </div>
                 <div class="field-body">
                     <div class="field">
@@ -113,7 +113,7 @@ const InsulinResult = props => {
     const createInput = (label, id, v, handler) => (
         <div class="field is-horizontal insulin-result-input">
             <div class="field-label is-normal">
-                <label class="label white">{label}</label>
+                <label class="label">{label}</label>
             </div>
             <div class="field-body">
                 <div class="field">

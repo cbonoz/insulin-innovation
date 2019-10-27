@@ -54,13 +54,9 @@ $section-padding-large: 9rem 1.5rem;
   padding-right: 20px;
 }
 
-.insulin-result-section {
-  padding: 20px;
-  // background: $light;
-}
 
 .insulin-result-section input {
-  background: gray;
+  background: lightgrey;
 }
 
 .confirm-modal {
@@ -81,22 +77,45 @@ $section-padding-large: 9rem 1.5rem;
   font-size: 24px;
 }
 
+.heading {
+  font-weight: bold;
+  font-size: 14px !important;
+  margin-bottom: 12px !important;
+}
+
 .info-button {
   margin: 20px;
   font-size: 24px;
   padding: 40px;
 }
 
+hr { display: block; height: 1px;
+  border: 0; border-top: 1px solid $info;
+  margin: 1em 0; padding: 0; }
+
 .food-accordion-header {
   font-size: 24px;
 }
 
-.food-accordion {
-  color: white;
+.insulin-result-section {
+  padding: 20px;
 }
 
 .insulin-result {
-  color: white;
+  background: $light;
+}
+
+.food-accordion {
+  // color: white;
+  background: $light;
+}
+
+.insulin-result {
+  // color: white;
+}
+
+.food-accordion-item {
+  // color: #ddd;
 }
 
 .food-accordion-group {
@@ -106,9 +125,6 @@ $section-padding-large: 9rem 1.5rem;
   border-bottom: 1px solid white;
 }
 
-.food-accordion-item {
-  color: #ddd;
-}
 
 .image-result {
   margin-top: 20px;
