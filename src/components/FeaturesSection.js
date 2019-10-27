@@ -19,9 +19,9 @@ function FeaturesSection(props) {
             columns={2}
             items={[
               {
-                title: "Lorem Ipsum",
+                title: "Connect imagery with data",
                 body:
-                  "Integer ornare neque mauris, ac vulputate lacus venenatis et. Pellentesque ut ultrices purus.",
+                  "Insulin.ai leverages image recognition along social determinant based data to make insulin recommendations",
                 image: "https://uploads.divjoy.com/undraw-fish_bowl_uu88.svg"
               },
               {
@@ -31,16 +31,16 @@ function FeaturesSection(props) {
                 image: "https://uploads.divjoy.com/undraw-directions_x53j.svg"
               },
               {
-                title: "Encourage healthy habits",
+                title: "Discuss healthy habits",
                 body:
-                  "Data driven metrics for encouraging healthy patient behavior and exercise",
+                  "Data driven metrics for encouraging healthy patient behavior and exercise, regardless of individual background",
                 image:
                   "https://uploads.divjoy.com/undraw-stability_ball_b4ia.svg"
               },
               {
                 title: "Full CRM",
                 body:
-                  "Manage relationships will all your Diabetes patients with a single platform",
+                  "Manage relationships will all your Diabetes patients with a single platform. Track insulin usage and have more intelligent conversations with patients to improve outcomes",
                 image:
                   "https://uploads.divjoy.com/undraw-personal_settings_kihd.svg"
               }
