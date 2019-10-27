@@ -21,31 +21,32 @@ const InsulinResult = props => {
     const [insulinSensitivity, setInsulinSensitivity] = useState(50);
     const [premealBloodSugar, setPremealBloodSugar] = useState(80);
     const [actualBloodSugar, setActualBloodSugar] = useState(140);
+    let [insulinCalculation, setInsulinCalculation] = useState(InsulinCalculator(carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar, [], "white"));
 
     useEffect(() => {
-        console.log('dat', InsulinCalculator(carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar, [], "white"))
-    }, [carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar]);
+        setInsulinCalculation(InsulinCalculator(carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar, [], "white"));
+    }, [props.food, carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar]);
 
     const handleChange = useCallback(event => {
-        const { carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar} = lookUpTable;
         switch (event.target.id) {
-            case carbGrams:
+            case lookUpTable.carbGrams:
                 setCarbGrams(event.target.value);
                 break;
-            case insulinToCarb:
+            case lookUpTable.insulinToCarb:
                 setInsulinToCarb(event.target.value);
                 break;
-            case insulinSensitivity:
+            case lookUpTable.insulinSensitivity:
                 setInsulinSensitivity(event.target.value);
                 break;
-            case premealBloodSugar:
+            case lookUpTable.premealBloodSugar:
                 setPremealBloodSugar(event.target.value);
                 break;
-            case actualBloodSugar:
+            case lookUpTable.actualBloodSugar:
                 setActualBloodSugar(event.target.value);
                 break;
             default:
         }
+
     }, [])
 
     return (
@@ -57,6 +58,7 @@ const InsulinResult = props => {
             <h2>Insulin Sensitivity: <input id={lookUpTable.insulinSensitivity} value={insulinSensitivity} onChange={handleChange} /></h2>
             <h2>premeal Blood Sugar: <input id={lookUpTable.premealBloodSugar} value={premealBloodSugar} onChange={handleChange} /></h2>
             <h2>actual Blood Sugar: <input id={lookUpTable.actualBloodSugar} value={actualBloodSugar} onChange={handleChange} /></h2>
+            <h2>Amount of Insulin units to provide: {insulinCalculation}</h2>
         </div>
     )
 }
