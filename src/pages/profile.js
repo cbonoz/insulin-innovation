@@ -9,6 +9,7 @@ import {
   VictoryZoomContainer,
 } from "victory";
 import chart_data from "../data/chart_data"
+import { Link } from "./../util/router.js";
 
 const mockUser = {
   name: "Brandon In",
@@ -39,24 +40,34 @@ const ProfilePage = props  => {
   return (
     <div className="profile">
       <div>
-          <h2>
-            Patient: {user.name}
-          </h2>
-          <h2>
-            Age: {user.age}
-          </h2>
-          <h2>
-            {user.weight ? `Weight: ${user.weight} kg` : ''}
-          </h2>
-          <h2>
+          <h1 className="profile_font">
+            {user.name}
+          </h1>
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="patient" class="profile_image"/>
+          <div>
+            < button className = "calculate_insulin_button" > < Link className = "calculate_insulin_button" to="/dashboard"> Calculate Insulin </Link></button>
+          </div>
+          <div style={{marginTop: "20px", marginBottom: "20px"}}>
+            <h1 style={{display: "inline-block", marginRight: "50px", fontSize: "20px", fontWeight: "bold"}}>
+              Age
+              <h2>{user.age}</h2>
+            </h1>
+            <h1 style={{display: "inline-block",  fontSize: "20px", fontWeight: "bold"}}>
+              Weight
+              <h2>{user.weight} kg</h2>
+            </h1>
+          </div>
+          <h2 style={{display: "inline-block", marginRight: "5px",  fontSize: "20px"}}>
             Steroids:
           </h2>
+          <br />
           {user.steroids.map(steroid => (
-            <h2>
-              {steroid}
-            </h2>
-          ))
-          }
+            <div>
+              <h2 style={{color: "white", backgroundColor: "rgb(73, 167, 199)", padding: "5px 10px", borderRadius: "15px", display: "inline-block", border: "1px solid white"}}>
+                {steroid}
+              </h2>
+            </div>
+          ))}
       </div>
       <div className="victoryContainer">
         <VictoryChart

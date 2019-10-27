@@ -117,11 +117,35 @@ $section-padding-large: 9rem 1.5rem;
 
 .profile {
   overflow: scroll;
+  text-align: center;
+  background-image: url("../assets/profile-background.jpg");
+  background-size: auto;
+}
+
+.profile_font {
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  text-shadow: -1px 0 lightblue, 0 1px lightblue, 1px 0 lightblue, 0 -1px lightblue;
+}
+
+.profile_image {
+  border-radius: 50%;
+}
+
+.calculate_insulin_button {
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color:rgb(73, 167, 199);
+  color: white;
+  cursor: pointer;
 }
 
 .victoryContainer {
-  height: 20%;
-  width: 30%;
+  height: 100%;
+  width: 100%;
 }
 // SEE DOCS FOR MORE:
 // https://bit.ly/30UvE5O
