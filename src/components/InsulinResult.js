@@ -132,7 +132,7 @@ const InsulinResult = props => {
             <div className='insulin-result-section'>
                 <h3 className='heading'>Your Result</h3>
                 <h2>
-                    <span className='insulin-result-units'>{insulinCalculation}</span>
+                    <span className='insulin-result-units'>{Math.round(insulinCalculation, 2)}</span>
                     <span className='insulin-result-text'>Insulin Units</span>
                 </h2>
                 <br/>
