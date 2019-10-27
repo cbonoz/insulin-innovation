@@ -27,7 +27,7 @@ function Navbar(props) {
         </div>
         <div className={"navbar-menu" + (menuOpen ? " is-active" : "")}>
           <div className="navbar-end">
-            {auth.user && (
+            {(auth.user || true) && (
               <div className="navbar-item has-dropdown is-hoverable"  onClick={() => setMenuOpen(!menuOpen)}>
                 <Link className="navbar-link" to="/">
                   Account
@@ -53,9 +53,11 @@ function Navbar(props) {
               </div>
             )}
 
-            {!auth.user && (
-              // should be /signin
-              <Link className="navbar-item" to="/dashboard">
+            {/* // TODO: should be /signin */}
+            {false && !auth.user && (
+              <Link className="navbar-item" to="/signin" onClick={e => {
+                setMenuOpen(!menuOpen) 
+              }}>
                 Sign in
               </Link>
             )}

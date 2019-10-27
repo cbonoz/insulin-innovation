@@ -42,6 +42,29 @@ $section-padding-large: 9rem 1.5rem;
   padding: 40px;
 }
 
+.food-accordion-header {
+  font-size: 24px;
+}
+
+.food-accordion {
+  color: white;
+}
+
+.insulin-result {
+  color: white;
+}
+
+.food-accordion-group {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.food-accordion-item {
+  color: #ddd;
+}
+
 .image-result {
   margin-top: 20px;
   border: 5px solid $info;

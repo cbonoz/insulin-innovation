@@ -52,12 +52,13 @@ function DashboardPage(props) {
               })
                   .then(res => res.json())
                   .then(res => {
-                      console.log('results', res)
+                      console.log('res', res)
                       if (!res.is_food) {
                           // $('#exampleModalLong').modal('hide')
                           alert("I did not detect any recognizable food in this photo!");
                       } else {
                           setResults(res.results)
+                          console.log('results', res.results)
                       }
                   })
           })
@@ -68,7 +69,7 @@ function DashboardPage(props) {
 
   const accordion = () => {
     const body = {} // TODO: replace
-    
+
     fetch(`${SERVER_URL}/food`, {
       method: "POST",
       headers: {
@@ -101,15 +102,14 @@ function DashboardPage(props) {
           {imgData && <img className='image-result' src={imgData}/>}
           <button class="modal-close is-large" aria-label="close"></button>
 
-
-          <div className="modal" is-active>
+          <div className={hasResults ? "modal is-active" : "modal"}>
             <div class="modal-background"></div>
             <div class="modal-content">
                   {/* Show either the food accordion or the recommended insulin result */}
-                 {hasResults && !hasFood && <FoodAccordion results={results}/>}
+                 {hasResults && !hasFood && <FoodAccordion results={results} setFood={(food) => setFood(food)}/>}
                  {hasFood && <InsulinResult food={food}/>}
             </div>
-            <button class="modal-close is-large" aria-label="close"></button>
+            <button class="modal-close is-large" onClick={() => setResults([])} aria-label="close"></button>
           </div>
           
       </div>

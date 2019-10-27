@@ -16,14 +16,14 @@ function IndexPage(props) {
         subtitle=""
         buttonText="Let's go"
         buttonOnClick={() => {
-          router.push("/pricing");
+          router.push("/dashboard");
         }}
       />
       <FeaturesSection
         color="white"
         size="medium"
         title="A new Diabetes management platform"
-        subtitle="Increase feedback with patients without a face to face visit"
+        subtitle="Effective insulin administration tailored for every individual and diet"
       />
     
       />
