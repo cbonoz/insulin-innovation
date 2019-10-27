@@ -18,6 +18,7 @@ import "./../util/analytics.js";
 import { ProvideAuth } from "./../util/auth.js";
 
 import logo from '../assets/insulin_invert.png'
+import InsulinResult from "../components/InsulinResult";
 
 function App(props) {
   return (
@@ -42,6 +43,8 @@ function App(props) {
             <Route exact path="/contact" component={ContactPage} />
 
             <Route exact path="/dashboard" component={DashboardPage} />
+
+            <Route exact path="/insulin" component={InsulinResult} />
 
             <Route exact path="/profile" component={ProfilePage} />
 
