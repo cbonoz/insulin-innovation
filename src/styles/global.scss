@@ -1,13 +1,13 @@
 @charset "utf-8";
 
 // COLORS
-$primary: #00d1b2;
 $info: #209CEE;
 $success: #23D160;
 $warning: #FFDD57;
 $danger: #FF3860;
 $light: #F5F5F5;
 $dark: #363636;
+$primary: #222;
 
 // TEXT
 $text: #4A4A4A;
@@ -31,6 +31,21 @@ $fullhd-enabled: false;
 $section-padding: 3rem 1.5rem;
 $section-padding-medium: 6rem 1.5rem;
 $section-padding-large: 9rem 1.5rem;
+
+.centered {
+  text-align: center;
+}
+
+.info-button {
+  margin: 20px;
+  font-size: 24px;
+  padding: 40px;
+}
+
+.image-result {
+  margin-top: 20px;
+  border: 5px solid $info;
+}
 
 // SEE DOCS FOR MORE:
 // https://bit.ly/30UvE5O

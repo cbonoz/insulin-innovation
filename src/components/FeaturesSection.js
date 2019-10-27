@@ -25,22 +25,22 @@ function FeaturesSection(props) {
                 image: "https://uploads.divjoy.com/undraw-fish_bowl_uu88.svg"
               },
               {
-                title: "Lorem Ipsum",
+                title: "Location based analysis",
                 body:
-                  "Nunc nulla mauris, laoreet vel cursus lacinia, consectetur sit amet tellus.",
+                  "Look at more than just insulin logs. We'll make recommendations for intervention that looks at each individuals location as well as particular situation",
                 image: "https://uploads.divjoy.com/undraw-directions_x53j.svg"
               },
               {
-                title: "Lorem Ipsum",
+                title: "Encourage healthy habits",
                 body:
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lobortis, metus et mattis ullamcorper",
+                  "Data driven metrics for encouraging healthy patient behavior and exercise",
                 image:
                   "https://uploads.divjoy.com/undraw-stability_ball_b4ia.svg"
               },
               {
-                title: "Lorem Ipsum",
+                title: "Full CRM",
                 body:
-                  "Suspendisse ut tincidunt eros. In velit mi, rhoncus dictum neque a, tincidunt lobortis justo",
+                  "Manage relationships will all your Diabetes patients with a single platform",
                 image:
                   "https://uploads.divjoy.com/undraw-personal_settings_kihd.svg"
               }

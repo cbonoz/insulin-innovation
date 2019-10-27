@@ -2,15 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "./../util/auth.js";
 import { useRouter } from "./../util/router.js";
 import _ from 'lodash'
+import Webcam from "react-webcam";
 
 import { VictoryChart, VictoryTheme, VictoryArea, VictoryStack } from "victory";
 import Graph from "../components/Graph.js";
+
+import logo from '../assets/insulin_logo.png'
+
+const videoConstraints = {
+    width: 544,
+    height: 544,
+    facingMode: "user"
+};
 
 
 function DashboardPage(props) {
   const auth = useAuth();
   const router = useRouter();
   const [data, setData] = useState([])
+  const [imgData, setImgData] = useState(null)
 
   // TODO: generate real predictions based on slider settings.
   function getData() {
@@ -37,28 +47,58 @@ function DashboardPage(props) {
     }, 4000);
   }, [auth, router]);
 
+
+  let webcamRef = React.createRef();
+
+  const capture = () => {
+      const imageSrc = webcamRef.current.getScreenshot();
+      setImgData(imageSrc)
+      fetch(imageSrc)
+          .then(res => res.blob())
+          .then(blob => {
+              const formData = new FormData();
+              formData.append("image", blob);
+              console.log('blob', blob)
+              fetch("https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition?user_key=415887203cdb8327e9fbdb81409dd3cc", {
+                  method: "POST",
+                  body: formData
+              })
+                  .then(res => res.json())
+                  .then(res => {
+                      if (!res.is_food) {
+                          // $('#exampleModalLong').modal('hide')
+                          alert("I did not detect any recognizable food in this photo!");
+                      } else {
+                          console.log('results', res)
+                      }
+                  })
+          })
+
+
+  }
+
+
   return (
-    <div>
-         <VictoryChart
-        theme={VictoryTheme.material}
-        animate={{ duration: 1000 }}
-      >
-        <VictoryStack
-          colorScale={"blue"}
-        >
-          {data.map((data, i) => {
-            return (
-              <VictoryArea
-                key={i}
-                data={data}
-                interpolation={"basis"}
-              />
-            );
-          })}
-        </VictoryStack>
-      </VictoryChart>
-    </div>
-  );
+      <div className='centered'>
+            {/* <div class="card-content"></div> */}
+          {/* <h3>Take a photo</h3> */}
+          <br/>
+          <Webcam
+              audio={false}
+              height={544}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg"
+              width={544}
+              videoConstraints={videoConstraints}
+          />
+          <br/>
+          <button className="button is-info info-button" onClick={capture}>TAKE PHOTO</button>
+          <br/>
+          {imgData && <img className='image-result' src={imgData}/>}
+          <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+  )
 }
 
 export default DashboardPage;

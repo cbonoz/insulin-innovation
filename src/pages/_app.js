@@ -16,6 +16,8 @@ import Footer from "./../components/Footer";
 import "./../util/analytics.js";
 import { ProvideAuth } from "./../util/auth.js";
 
+import logo from '../assets/insulin_invert.png'
+
 function App(props) {
   return (
     <ProvideAuth>
@@ -24,7 +26,7 @@ function App(props) {
           <Navbar
             color="primary"
             spaced={true}
-            logo="https://uploads.divjoy.com/logo-white.svg"
+            logo={logo}
           />
 
           <Switch>

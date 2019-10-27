@@ -3,9 +3,11 @@ import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import SectionButton from "./SectionButton";
 
+const img = 'https://tagcommercialbroker.com/wp-content/uploads/2018/06/treatment-room-548143_1920.jpg'
+
 function HeroSection(props) {
   return (
-    <Section color={props.color} size={props.size}>
+    <Section backgroundImage={img} size={props.size}>
       <div className="container">
         <SectionHeader
           title={props.title}

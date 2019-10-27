@@ -12,9 +12,9 @@ function IndexPage(props) {
       <HeroSection
         color="primary"
         size="large"
-        title="Your landing page title here"
-        subtitle="This landing page is perfect for showing off your awesome product and driving people to sign up for a paid plan."
-        buttonText="Start Free Trial"
+        title="Your personal insulin assistant"
+        subtitle=""
+        buttonText="Let's go"
         buttonOnClick={() => {
           router.push("/pricing");
         }}
@@ -22,18 +22,10 @@ function IndexPage(props) {
       <FeaturesSection
         color="white"
         size="medium"
-        title="Features"
-        subtitle="All the features you need to move faster"
+        title="A new Diabetes management platform"
+        subtitle="Increase feedback with patients without a face to face visit"
       />
-      <CtaSection
-        color="primary"
-        size="medium"
-        title="Ready to get started?"
-        subtitle=""
-        buttonText="Get Started"
-        buttonOnClick={() => {
-          router.push("/pricing");
-        }}
+    
       />
     </>
   );
