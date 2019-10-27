@@ -2,7 +2,7 @@ import React, { Component, useEffect } from 'react'
 import InsulinCalculator from "../util/insulinCalculator";
 
 const InsulinResult = props => {
-    const { food } = this.props
+    const { food } = props
     const { nutrition } = food
     const { totalCarbs } = nutrition
     const carbGrams = totalCarbs * 100;
