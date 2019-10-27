@@ -68,7 +68,10 @@ const InsulinResult = props => {
                 xmin={0}
                 xmax={100}
                 x={percentage}
-                onChange={({ x }) => setPercentage(x)}
+                onChange={({ x }) => {
+                    console.log('%', x)
+                    setPercentage(x)
+                }}
             />
             <br />
             <hr />
@@ -137,6 +140,10 @@ const InsulinResult = props => {
                 </h2>
                 <br/>
                 <p>Based on your background and figures below, we recommend the above insulin units premeal.</p>
+                {insulinCalculation > 25 && <p className='red'>
+                    <br/>
+                    This seems like a large amount of insulin units for a meal, recommend double checking your values. 
+                </p>}
                 <hr/>
                 {createInput('Carbs', lookUpTable.carbGrams, carbGrams, handleChange)}
                 {createInput('Insulin to carb ratio', lookUpTable.insulinToCarb, insulinToCarb, handleChange)}
