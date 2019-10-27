@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import InsulinCalculator from "../util/insulinCalculator";
 
 export default class InsulinResult extends Component {
     render() {
@@ -8,9 +9,10 @@ export default class InsulinResult extends Component {
 
         return (
             <div className='insulin-result'>
-               <p>{JSON.stringify(food)}</p> 
+               <p>{JSON.stringify(food)}</p>
                <br/>
-               <p>Carbs: {totalCarbs}</p>
+               <h2>Insulin Sensitivity</h2>
+               <p>Carbs: {totalCarbs * 100}</p>
             </div>
         )
     }

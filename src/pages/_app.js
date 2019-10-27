@@ -45,7 +45,7 @@ function App(props) {
 
             <Route exact path="/profile" component={ProfilePage} />
 
-            <Route exact path="/signin" component={SigninPage} /> 
+            <Route exact path="/signin" component={SigninPage} />
 
             <Route exact path="/signup" component={SignupPage} />
 
