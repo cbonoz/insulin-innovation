@@ -32,8 +32,52 @@ $section-padding: 3rem 1.5rem;
 $section-padding-medium: 6rem 1.5rem;
 $section-padding-large: 9rem 1.5rem;
 
+
+.white {
+  color: $light !important;
+}
+
 .centered {
   text-align: center;
+}
+
+.button {
+  cursor: pointer !important;
+}
+
+.left {
+  text-align: left;
+}
+
+.insulin-result-input {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.insulin-result-section {
+  padding: 20px;
+}
+
+.insulin-result-section input {
+  background: gray;
+}
+
+.confirm-modal {
+  padding: 20px;
+}
+
+.confirm-columns {
+  padding: 20px;
+}
+
+.insulin-result-units {
+  padding-right: 8px;
+  font-size: 64px;
+  color: green;
+}
+
+.insulin-result-text {
+  font-size: 24px;
 }
 
 .info-button {
