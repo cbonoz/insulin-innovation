@@ -40,7 +40,7 @@ function Navbar(props) {
                     Patient
                   </Link>
                   <Link className="navbar-item" to="/profile">
-                    Send data
+                    Share data with clinician
                   </Link>
                   <Link
                     className="navbar-item"
