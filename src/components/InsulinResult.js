@@ -143,6 +143,8 @@ const InsulinResult = props => {
                 {createInput('Insulin Sensitivity', lookUpTable.insulinSensitivity, insulinSensitivity, handleChange)}
                 {createInput('Premeal Blood Sugar', lookUpTable.premealBloodSugar, premealBloodSugar, handleChange)}
                 {createInput('Actual Blood Sugar', lookUpTable.actualBloodSugar, actualBloodSugar, handleChange)}
+
+                <button class="button is-success" onClick={() => window.location.href = "/profile"}>Save Data</button>
             </div>
         </div>
     )

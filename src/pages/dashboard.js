@@ -117,7 +117,7 @@ function DashboardPage(props) {
           {imgData && <img className='image-result' src={imgData}/>}
           <button class="modal-close is-large" aria-label="close"></button>
 
-          <div className={hasFood ? "modal is-active" : "modal"}>
+          <div className={(hasResults || hasFood) ? "modal is-active" : "modal"}>
             <div class="modal-background"></div>
             <div class="modal-content">
                   {/* Show either the food accordion or the recommended insulin result */}
