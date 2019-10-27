@@ -7,8 +7,8 @@ const InsulinResult = props => {
     const { totalCarbs } = nutrition
     const carbGrams = totalCarbs * 100;
     useEffect(() => {
-        InsulinCalculator(carbGrams, 10, 50, premealBloodSugar, actualBloodSugar, medication, "white")
-    }, [])
+        console.log('dat', InsulinCalculator(carbGrams, 10, 50, 80, 140, null, "white"))
+    }, [carbGrams]);
 
     return (
         <div className='insulin-result'>
