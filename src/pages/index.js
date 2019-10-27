@@ -22,8 +22,8 @@ function IndexPage(props) {
       <FeaturesSection
         color="white"
         size="medium"
-        title="A new Diabetes management platform"
-        subtitle="Effective insulin administration tailored for every individual and diet"
+        title="A new insulin dosing management platform"
+        subtitle="Effective insulin administration tailored for every individual, diet, and background"
       />
     
       />
