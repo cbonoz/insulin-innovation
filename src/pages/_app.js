@@ -45,7 +45,8 @@ function App(props) {
 
             <Route exact path="/profile" component={ProfilePage} />
 
-            <Route exact path="/signin" component={SigninPage} />
+            {/* TODO: replace with login */}
+            <Route exact path="/dashboard" component={SigninPage} /> 
 
             <Route exact path="/signup" component={SignupPage} />
 
