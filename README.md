@@ -10,9 +10,11 @@ From home directory of the project:
 
 ### Notes
 * Integrates with any FHIR or medical record system
-* Many apps exist for diabetes, but few are just in time. Glucometers can help, but are more reactive than preventative.
+* 71 billion per year in in-patient hospital costs for diabetes
+* Insulin the most frequently described drug in hospitals and 30% of all presription fatalities are because of insulin mis-dosages
+* Many apps exist for diabetes tracking, but few are just in time or provide active recommendations. Glucometers can help gauge dosage, but are more reactive than preventative.
 * Food recognition, social data, medical research all power our rules engine that adjusts recommendation dosages for that individual's specific backgorund.
-* With insulin.ai, we're looking to empower uses to get more intelligent recommendations for insulin dosages in response *before* a meal.
+* With insulin.ai, we're looking to empower users to get more intelligent recommendations for insulin dosages in response *before* a meal.
 * Share and track results with clinicians via email or in person.
 
 
