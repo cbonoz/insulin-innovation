@@ -1,8 +1,8 @@
-import React, { Component, useCallback, useEffect, useState } from 'react'
-import InsulinCalculator from "../util/insulinCalculator";
+import React, { useCallback, useEffect, useState } from 'react'
+import InsulinCalculator from "../util/insulinCalculator"
 import ReactSlider from 'react-slider'
 import Slider from 'react-input-slider'
-import Footer from './Footer';
+import Footer from './Footer'
 
 const lookUpTable = {
     carbGrams: "carbGrams",
@@ -13,17 +13,25 @@ const lookUpTable = {
 }
 
 const InsulinResult = props => {
+    let totalCarbs
+    let name = 'pastry'
+    let calories
+    if (props.food) {
+        const { food } = props
+        name = food.name
+        const { nutrition } = food
+        totalCarbs = nutrition.totalCarbs
+        calories = nutrition.calories
+    }
 
-    const { food } = props
-    const { nutrition } = food
-    const { totalCarbs, totalFat, protein, calories } = nutrition
-
-    const [carbGrams, setCarbGrams] = useState(totalCarbs * 100 || 50);
-    const [insulinToCarb, setInsulinToCarb] = useState(10);
-    const [insulinSensitivity, setInsulinSensitivity] = useState(50);
-    const [premealBloodSugar, setPremealBloodSugar] = useState(80);
-    const [actualBloodSugar, setActualBloodSugar] = useState(140);
     const [percentage, setPercentage] = useState(100)
+    const [carbGrams, setCarbGrams] = useState((totalCarbs * percentage) || 50)
+    const [insulinToCarb, setInsulinToCarb] = useState(10)
+    const [insulinSensitivity, setInsulinSensitivity] = useState(50)
+    const [premealBloodSugar, setPremealBloodSugar] = useState(80)
+    const [actualBloodSugar, setActualBloodSugar] = useState(140)
+    const [insulinCalculation, setInsulinCalculation] = useState(InsulinCalculator(carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar, [], "white"))
+
     const [confirmed, setConfirmed] = useState(false)
 
     function confirmFood() {
@@ -31,9 +39,9 @@ const InsulinResult = props => {
         return (<div class='centered insulin-result confirm-modal'>
             <h3 className='heading'>Does this look right?</h3>
 
-            <p>Food: {food.name}, ~{calories / 10} Calories</p>
+            <p>Food: {name}, ~{calories / 10} Calories</p>
             <br />
-            
+
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label white">Carbs</label>
@@ -49,7 +57,7 @@ const InsulinResult = props => {
 
             <br />
 
-            <p>How much of this meal did or will you eat?</p>
+            <p>How much of this meal do you think you will you eat?</p>
 
             <br />
 
@@ -67,33 +75,35 @@ const InsulinResult = props => {
 
             <button class="button is-success" onClick={() => setConfirmed(true)}>Continue</button>
 
-        </div>)
+        </div>
+        )
     }
 
     useEffect(() => {
-        console.log('dat', InsulinCalculator(carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar, [], "white"))
-    }, [carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar]);
+        setInsulinCalculation(InsulinCalculator(carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar, [], "white"))
+    }, [props.food, carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar])
 
     const handleChange = useCallback(event => {
-        const { carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar } = lookUpTable;
+        // const { carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar } = lookUpTable
         switch (event.target.id) {
-            case carbGrams:
-                setCarbGrams(event.target.value);
-                break;
-            case insulinToCarb:
-                setInsulinToCarb(event.target.value);
-                break;
-            case insulinSensitivity:
-                setInsulinSensitivity(event.target.value);
-                break;
-            case premealBloodSugar:
-                setPremealBloodSugar(event.target.value);
-                break;
-            case actualBloodSugar:
-                setActualBloodSugar(event.target.value);
-                break;
+            case lookUpTable.carbGrams:
+                setCarbGrams(event.target.value)
+                break
+            case lookUpTable.insulinToCarb:
+                setInsulinToCarb(event.target.value)
+                break
+            case lookUpTable.insulinSensitivity:
+                setInsulinSensitivity(event.target.value)
+                break
+            case lookUpTable.premealBloodSugar:
+                setPremealBloodSugar(event.target.value)
+                break
+            case lookUpTable.actualBloodSugar:
+                setActualBloodSugar(event.target.value)
+                break
             default:
         }
+
     }, [])
 
     if (!confirmed) {
@@ -102,38 +112,41 @@ const InsulinResult = props => {
 
     const createInput = (label, id, v, handler) => (
         <div class="field is-horizontal insulin-result-input">
-        <div class="field-label is-normal">
-            <label class="label white">{label}</label>
-        </div>
-        <div class="field-body">
-            <div class="field">
-                <p class="control">
-                    <input class="input" type="number" value={v} id={id} onChange={handler} />
-                </p>
+            <div class="field-label is-normal">
+                <label class="label white">{label}</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <p class="control">
+                        <input class="input" type="number" value={v} id={id} onChange={handler} />
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
     )
 
     return (
         <div className='insulin-result'>
             {/* <p>{JSON.stringify(food)}</p> */}
             {/* <br/> */}
-            <div className='input-result-section'>
+            <div className='insulin-result-section'>
+                <h3 className='heading'>Your Result</h3>
+                <h2>
+                    <span className='insulin-result-units'>{insulinCalculation}</span>
+                    <span className='insulin-result-text'>Insulin Units</span>
+                </h2>
+                <br/>
+                <p>Based on your background and figures below, we recommend the above insulin units premeal.</p>
+                <hr/>
                 {createInput('Carbs', lookUpTable.carbGrams, carbGrams, handleChange)}
-                {createInput('Insulin to Carb', lookUpTable.insulinToCarb, insulinToCarb, handleChange)}
+                {createInput('Insulin to carb ratio', lookUpTable.insulinToCarb, insulinToCarb, handleChange)}
                 {createInput('Insulin Sensitivity', lookUpTable.insulinSensitivity, insulinSensitivity, handleChange)}
                 {createInput('Premeal Blood Sugar', lookUpTable.premealBloodSugar, premealBloodSugar, handleChange)}
                 {createInput('Actual Blood Sugar', lookUpTable.actualBloodSugar, actualBloodSugar, handleChange)}
             </div>
-            {/* <p>Carbs: <input id={lookUpTable.carbGrams} value={carbGrams} onChange={handleChange} /></p>
-            <h2>Insulin to Carb: <input id={lookUpTable.insulinToCarb} value={insulinToCarb} onChange={handleChange} /></h2>
-            <h2>Insulin Sensitivity: <input id={lookUpTable.insulinSensitivity} value={insulinSensitivity} onChange={handleChange} /></h2>
-            <h2>premeal Blood Sugar: <input id={lookUpTable.premealBloodSugar} value={premealBloodSugar} onChange={handleChange} /></h2>
-            <h2>actual Blood Sugar: <input id={lookUpTable.actualBloodSugar} value={actualBloodSugar} onChange={handleChange} /></h2> */}
         </div>
     )
 }
 
 
-export default InsulinResult;
+export default InsulinResult

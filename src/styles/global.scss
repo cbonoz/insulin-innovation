@@ -58,12 +58,26 @@ $section-padding-large: 9rem 1.5rem;
   padding: 20px;
 }
 
+.insulin-result-section input {
+  background: gray;
+}
+
 .confirm-modal {
   padding: 20px;
 }
 
 .confirm-columns {
   padding: 20px;
+}
+
+.insulin-result-units {
+  padding-right: 8px;
+  font-size: 64px;
+  color: green;
+}
+
+.insulin-result-text {
+  font-size: 24px;
 }
 
 .info-button {
