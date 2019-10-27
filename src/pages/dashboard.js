@@ -86,6 +86,11 @@ function DashboardPage(props) {
     })
   }
 
+  function clearResults()  {
+    setFood(null)
+    setResults([])
+  }
+
   return (
       <div className='centered'>
             {/* <div class="card-content"></div> */}
@@ -112,7 +117,7 @@ function DashboardPage(props) {
                  {!hasFood && <FoodAccordion results={results} setFood={(food) => setFood(food)}/>}
                  {hasFood && <InsulinResult food={food}/>}
             </div>
-            <button class="modal-close is-large" onClick={() => setResults([])} aria-label="close"></button>
+            <button class="modal-close is-large" onClick={() => clearResults()} aria-label="close"></button>
           </div>
           
       </div>
