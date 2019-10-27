@@ -12,7 +12,7 @@ function IndexPage(props) {
       <HeroSection
         color="primary"
         size="large"
-        title="Your personal insulin assistant"
+        title="Just in time insulin recommendations"
         subtitle=""
         buttonText="Let's go"
         buttonOnClick={() => {

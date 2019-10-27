@@ -39,6 +39,9 @@ function Navbar(props) {
                   <Link className="navbar-item" to="/profile">
                     Profile
                   </Link>
+                  <Link className="navbar-item" to="/profile">
+                    Send data
+                  </Link>
                   <Link
                     className="navbar-item"
                     to="/signout"
