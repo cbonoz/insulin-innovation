@@ -54,7 +54,8 @@ function Navbar(props) {
             )}
 
             {!auth.user && (
-              <Link className="navbar-item" to="/signin">
+              // should be /signin
+              <Link className="navbar-item" to="/dashboard">
                 Sign in
               </Link>
             )}
