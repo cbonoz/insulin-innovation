@@ -50,6 +50,7 @@ const ProfilePage = props => {
     return (
         <div className="profile">
             <div>
+                <br/>
                 <h1 className="profile_font">
                     {user.name}
                 </h1>
