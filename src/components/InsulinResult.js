@@ -12,9 +12,7 @@ const lookUpTable = {
 }
 
 const InsulinResult = props => {
-    if (!props.food) {
-        return null
-    }
+ 
     const { food } = props
     const { nutrition } = food
     const { totalCarbs, totalFat, protein, calories } = nutrition
@@ -25,7 +23,6 @@ const InsulinResult = props => {
     const [premealBloodSugar, setPremealBloodSugar] = useState(80);
     const [actualBloodSugar, setActualBloodSugar] = useState(140);
     const [percentage, setPercentage] = useState(100)
-    const [carbGrams, setCarbGrams] = useState(totalCarbs * 100)
     const [confirmed, setConfirmed] = useState(false)
 
     function confirmFood() {
