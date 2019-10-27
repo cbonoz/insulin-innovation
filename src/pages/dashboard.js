@@ -7,7 +7,7 @@ import Webcam from "react-webcam";
 import { VictoryChart, VictoryTheme, VictoryArea, VictoryStack } from "victory";
 import Graph from "../components/Graph.js";
 
-import logo from '../assets/insulin_logo.png'
+const CAST_API = process.env.REACT_APP_CAST_API
 
 const videoConstraints = {
     width: 544,
@@ -42,9 +42,9 @@ function DashboardPage(props) {
       router.push("/signin");
     }
 
-    window.setInterval(() => {
-      setData(getData())
-    }, 4000);
+    // window.setInterval(() => {
+    //   setData(getData())
+    // }, 4000);
   }, [auth, router]);
 
 
@@ -59,7 +59,7 @@ function DashboardPage(props) {
               const formData = new FormData();
               formData.append("image", blob);
               console.log('blob', blob)
-              fetch("https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition?user_key=415887203cdb8327e9fbdb81409dd3cc", {
+              fetch(`https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition?user_key=${REACT_APP_CAST_API}`, {
                   method: "POST",
                   body: formData
               })
