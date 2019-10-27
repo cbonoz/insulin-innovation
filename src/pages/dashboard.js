@@ -18,7 +18,7 @@ const pastry = {"servingSizes":[{"unit":"1 danish","servingWeight":0.071},{"unit
 const videoConstraints = {
     width: 544,
     height: 544,
-    facingMode: "user"
+    facingMode: "forward"
 }
 
 function DashboardPage(props) {
