@@ -30,11 +30,11 @@ function Navbar(props) {
             {(auth.user || true) && (
               <div className="navbar-item has-dropdown is-hoverable"  onClick={() => setMenuOpen(!menuOpen)}>
                 <Link className="navbar-link" to="/">
-                  Account
+                  Home
                 </Link>
                 <div className="navbar-dropdown is-boxed">
                   <Link className="navbar-item" to="/dashboard">
-                    Premeal Insulin 
+                    Premeal insulin 
                   </Link>
                   <Link className="navbar-item" to="/profile">
                     Patient
