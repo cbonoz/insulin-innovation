@@ -14,7 +14,7 @@ function IndexPage(props) {
         size="large"
         title="Just in time insulin recommendations"
         subtitle=""
-        buttonText="Let's go"
+        buttonText="Get Started"
         buttonOnClick={() => {
           router.push("/dashboard");
         }}
