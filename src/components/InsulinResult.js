@@ -142,7 +142,7 @@ const InsulinResult = props => {
                 <p>Based on your background and figures below, we recommend the above insulin units premeal.</p>
                 {insulinCalculation > 25 && <p className='red'>
                     <br/>
-                    This seems like a large amount of insulin units for a meal, recommend double checking your values. 
+                    This seems like a large amount of insulin units for a meal, recommend reviewing before continuing.
                 </p>}
                 <hr/>
                 {createInput('Carbs', lookUpTable.carbGrams, carbGrams, handleChange)}
