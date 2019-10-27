@@ -1,5 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { Component, useCallback, useEffect, useState } from 'react'
 import InsulinCalculator from "../util/insulinCalculator";
+import ReactSlider from 'react-slider'
+import Footer from './Footer';
 
 const lookUpTable = {
     carbGrams: "carbGrams",
@@ -10,17 +12,48 @@ const lookUpTable = {
 }
 
 const InsulinResult = props => {
-    let totalCarbs;
-    if (props.food) {
-        const { food } = props
-        const { nutrition } = food
-        totalCarbs = nutrition.totalCarbs;
+    if (!props.food) {
+        return null
     }
+    const { food } = props
+    const { nutrition } = food
+    const { totalCarbs, totalFat, protein, calories } = nutrition
+
     const [carbGrams, setCarbGrams] = useState(totalCarbs * 100 || 50);
     const [insulinToCarb, setInsulinToCarb] = useState(10);
     const [insulinSensitivity, setInsulinSensitivity] = useState(50);
     const [premealBloodSugar, setPremealBloodSugar] = useState(80);
     const [actualBloodSugar, setActualBloodSugar] = useState(140);
+    const [percentage, setPercentage] = useState(100)
+    const [carbGrams, setCarbGrams] = useState(totalCarbs * 100)
+    const [confirmed, setConfirmed] = useState(false)
+
+    function confirmFood() {
+        
+        return (<div class='centered'>
+            <h3>Does this look right?</h3>
+
+            <p>{food.name}</p>
+
+            <div class="control">
+                <input class="input" type="number" value={carbGrams} onChange={(e) => setCarbGrams(e.target.value)} placeholder="Carbs"/>
+            </div>
+
+            <p>How much of this meal did or will you eat?</p>
+
+            <ReactSlider
+                value={percentage}
+                className="horizontal-slider"
+                thumbClassName="example-thumb"
+                trackClassName="example-track"
+                onChange={(v) => setPercentage(v)}
+                renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+            />
+
+            <button class="button is-success" onClick={() => setConfirmed(true)}>Continue</button>
+
+        </div>)
+    }
 
     useEffect(() => {
         console.log('dat', InsulinCalculator(carbGrams, insulinToCarb, insulinSensitivity, premealBloodSugar, actualBloodSugar, [], "white"))
@@ -47,6 +80,10 @@ const InsulinResult = props => {
             default:
         }
     }, [])
+
+    if (!confirmed) {
+        return confirmFood()
+    }
 
     return (
         <div className='insulin-result'>

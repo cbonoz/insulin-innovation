@@ -19,7 +19,7 @@ function FeaturesSection(props) {
             columns={2}
             items={[
               {
-                title: "Connect imagery with data",
+                title: "Connect diet with data",
                 body:
                   "Insulin.ai leverages image recognition along social determinant based data to make insulin recommendations",
                 image: "https://uploads.divjoy.com/undraw-fish_bowl_uu88.svg"
@@ -31,7 +31,7 @@ function FeaturesSection(props) {
                 image: "https://uploads.divjoy.com/undraw-directions_x53j.svg"
               },
               {
-                title: "Discuss healthy habits",
+                title: "Discover healthy habits",
                 body:
                   "Data driven metrics for encouraging healthy patient behavior and exercise, regardless of individual background",
                 image:

@@ -11,6 +11,10 @@ import FoodAccordion from "../components/FoodAccordion.js";
 const CAST_API = process.env.REACT_APP_CAST_API
 const SERVER_URL = process.env.REACT_APP_INSULIN_URL || `localhost`
 
+const TESTING = true
+
+const pastry = {"servingSizes":[{"unit":"1 danish","servingWeight":0.071},{"unit":"100 g","servingWeight":0.1},{"unit":"1 g","servingWeight":0.001},{"unit":"1 oz","servingWeight":0.0283495}],"score":84,"nutrition":{"totalCarbs":0.48,"totalFat":0.18,"protein":0.05,"calories":3710},"name":"Fruit Danish","food_id":"fe71adedcb2f4657","group":"Pastry"}
+
 const videoConstraints = {
     width: 544,
     height: 544,
@@ -34,6 +38,10 @@ function DashboardPage(props) {
     // }, 4000);
   }, [auth, router]);
 
+
+  if (TESTING) {
+    setFood(pastry)
+  }
 
   let webcamRef = React.createRef();
 
