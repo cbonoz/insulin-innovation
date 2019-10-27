@@ -27,7 +27,7 @@ const InsulinResult = props => {
 
     function confirmFood() {
         
-        return (<div class='centered'>
+        return (<div class='centered insulin-result'>
             <h3>Does this look right?</h3>
 
             <p>{food.name}</p>
