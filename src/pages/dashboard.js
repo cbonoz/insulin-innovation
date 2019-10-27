@@ -26,7 +26,7 @@ function DashboardPage(props) {
   const router = useRouter();
   const [imgData, setImgData] = useState(null)
   const [results, setResults] = useState([])
-  const [food, setFood] = useState()
+  const [food, setFood] = useState(TESTING ? pastry : null)
 
   // Redirect to /signin if not signed in.
   useEffect(() => {
@@ -37,11 +37,6 @@ function DashboardPage(props) {
     //   setData(getData())
     // }, 4000);
   }, [auth, router]);
-
-
-  if (TESTING) {
-    setFood(pastry)
-  }
 
   let webcamRef = React.createRef();
 
@@ -91,6 +86,11 @@ function DashboardPage(props) {
     })
   }
 
+  function clearResults()  {
+    setFood(null)
+    setResults([])
+  }
+
   return (
       <div className='centered'>
             {/* <div class="card-content"></div> */}
@@ -110,14 +110,14 @@ function DashboardPage(props) {
           {imgData && <img className='image-result' src={imgData}/>}
           <button class="modal-close is-large" aria-label="close"></button>
 
-          <div className={hasResults ? "modal is-active" : "modal"}>
+          <div className={hasFood ? "modal is-active" : "modal"}>
             <div class="modal-background"></div>
             <div class="modal-content">
                   {/* Show either the food accordion or the recommended insulin result */}
-                 {hasResults && !hasFood && <FoodAccordion results={results} setFood={(food) => setFood(food)}/>}
+                 {!hasFood && <FoodAccordion results={results} setFood={(food) => setFood(food)}/>}
                  {hasFood && <InsulinResult food={food}/>}
             </div>
-            <button class="modal-close is-large" onClick={() => setResults([])} aria-label="close"></button>
+            <button class="modal-close is-large" onClick={() => clearResults()} aria-label="close"></button>
           </div>
           
       </div>

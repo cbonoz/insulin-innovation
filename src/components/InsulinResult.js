@@ -31,30 +31,31 @@ const InsulinResult = props => {
     const [confirmed, setConfirmed] = useState(false)
 
     function confirmFood() {
+        return (
+            <div class='centered insulin-result'>
+                <h3>Does this look right?</h3>
 
-        return (<div class='centered'>
-            <h3>Does this look right?</h3>
+                <p>{name}</p>
 
-            <p>{name}</p>
+                <div class="control">
+                    <input class="input" type="number" value={carbGrams} onChange={(e) => setCarbGrams(e.target.value)} placeholder="Carbs"/>
+                </div>
 
-            <div class="control">
-                <input class="input" type="number" value={carbGrams} onChange={(e) => setCarbGrams(e.target.value)} placeholder="Carbs"/>
+                <p>How much of this meal did or will you eat?</p>
+
+                <ReactSlider
+                    value={percentage}
+                    className="horizontal-slider"
+                    thumbClassName="example-thumb"
+                    trackClassName="example-track"
+                    onChange={(v) => setPercentage(v)}
+                    renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+                />
+
+                <button class="button is-success" onClick={() => setConfirmed(true)}>Continue</button>
+
             </div>
-
-            <p>How much of this meal did or will you eat?</p>
-
-            <ReactSlider
-                value={percentage}
-                className="horizontal-slider"
-                thumbClassName="example-thumb"
-                trackClassName="example-track"
-                onChange={(v) => setPercentage(v)}
-                renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-            />
-
-            <button class="button is-success" onClick={() => setConfirmed(true)}>Continue</button>
-
-        </div>)
+        )
     }
 
     useEffect(() => {
