@@ -5,15 +5,25 @@ const MEDICINE_PREDNISONE = "PREDNISONE";
 const kg = 45;
 const medicationMultiplier = 1.2;
 
-const medicationInsulin = (insulin, medication) => {
+const insulinResistantEthnicity = ["asian_american", "african_american", "native_american", "hispanic/latino"];
+const medicationInsulin = (carbs, insulinToCarb = 10, insulinSensitivity = 50, premealBloodSugar, actualBloodSugar, medication, ethnicity) => {
     if (
         medication.includes(MEDICINE_DEXAMETHASONE) ||
         medication.includes(MEDICINE_METHYLPREDNISOLONE) ||
         medication.includes(MEDICINE_PREDNISONE)
     ) {
-        return insulin * medicationMultiplier * kg;
+        const insulinCalculatedFromCarbs = Math.round(carbs * insulinToCarb);
+        const insulinCalculatedFromGlucose = (actualBloodSugar - premealBloodSugar) / insulinSensitivity;
+
+
+        setTimeout(() => {
+            if (insulinResistantEthnicity.includes(ethnicity)) {
+                console.log("Make sure the check determine if they have higher insulin resistance");
+            }
+        }, 1000);
+
+        return (insulinCalculatedFromCarbs + insulinCalculatedFromGlucose) * medicationMultiplier;
     }
-    return insulin;
 }
 
 export default { medicationInsulin };
